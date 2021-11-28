@@ -10,27 +10,30 @@
 #   input: P@ssw0rd+P@ssw0rd
 #   ouput: Valid
 
-Criteria_01 = False
-Criteria_02 = False
-Criteria_03 = False
-Criteria_04 = False
-
 spcl_Char = "'[@_!#$%^&*()<>?/\|}{~:]`+=-.,:;~"
 
-Usr_Pass = input("Password: ")
+Input_Pass = input("Password: ")
 
-for PWChar in Usr_Pass: # Iterate every char in PWString then evaluate.
-    if Usr_Pass.rindex(PWChar) >= 16:
-        Criteria_01 = True
-    if PWChar.isalpha() == True: 
-        if PWChar == PWChar.upper():
-            Criteria_02 = True
-    elif PWChar.isdecimal() == True:
-        Criteria_03 = True
-    elif PWChar in spcl_Char:
-        Criteria_04 = True
-    
-print(Criteria_01)
-print(Criteria_02)
-print(Criteria_03)
-print(Criteria_04)
+def PWValidator(Usr_Pass):
+    Criteria_01 = False
+    Criteria_02 = False
+    Criteria_03 = False
+    Criteria_04 = False
+    for PWChar in Usr_Pass: # Iterate every char in PWString then evaluate.
+        if Usr_Pass.rindex(PWChar) >= 16:
+            Criteria_01 = True
+        if PWChar.isalpha() == True: 
+            if PWChar == PWChar.upper():
+                Criteria_02 = True
+        elif PWChar.isdecimal() == True:
+            Criteria_03 = True
+        elif PWChar in spcl_Char:
+            Criteria_04 = True
+    return Criteria_01, Criteria_02, Criteria_03, Criteria_04
+
+InstA, InstB, InstC, InstD = PWValidator(Input_Pass)
+
+if InstA and InstB and InstC and InstD == True:
+    print("\33[92mValid Password\33[0m")
+else:
+    print("\33[91mInvalid Password\33[0m")
