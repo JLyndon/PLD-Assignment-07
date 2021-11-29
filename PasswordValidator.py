@@ -1,3 +1,4 @@
+import sys
 # ------------- CONTEXT --------------
 # Program 2: Password validator
 # Create a program that check if password is valid
@@ -15,17 +16,20 @@ def PWValidator(Usr_Pass):
     Criteria_02 = False
     Criteria_03 = False
     Criteria_04 = False
-    for PWChar in Usr_Pass: # Iterate every char in PWString then evaluate.
-        if Usr_Pass.rindex(PWChar) >= 16:
-            Criteria_01 = True
-        if PWChar.isalpha() == True: 
-            if PWChar == PWChar.upper():
-                Criteria_02 = True
-        elif PWChar.isdecimal() == True:
-            Criteria_03 = True
-        elif PWChar in spcl_Char:
-            Criteria_04 = True
-    return Criteria_01, Criteria_02, Criteria_03, Criteria_04
+    if (Usr_Pass == "") or (Usr_Pass == None) or (Usr_Pass.isspace() == True):
+        sys.exit(print("\33[91mInvalid Password. You have no input\33[0m"))
+    else:
+        for PWChar in Usr_Pass: # Iterate every char in PWString then evaluate.
+            if Usr_Pass.rindex(PWChar) >= 16:
+                Criteria_01 = True
+            if PWChar.isalpha() == True: 
+                if PWChar == PWChar.upper():
+                    Criteria_02 = True
+            elif PWChar.isdecimal() == True:
+                Criteria_03 = True
+            elif PWChar in spcl_Char:
+                Criteria_04 = True
+        return Criteria_01, Criteria_02, Criteria_03, Criteria_04
 
 #Main Prog
 spcl_Char = "'[@_!#$%^&*()<>?/\|}{~:]`+=-.,:;~" + '"'
