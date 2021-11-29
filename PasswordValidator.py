@@ -10,10 +10,6 @@
 #   input: P@ssw0rd+P@ssw0rd
 #   ouput: Valid
 
-spcl_Char = "'[@_!#$%^&*()<>?/\|}{~:]`+=-.,:;~"
-
-Input_Pass = input("Password: ")
-
 def PWValidator(Usr_Pass):
     Criteria_01 = False
     Criteria_02 = False
@@ -31,9 +27,14 @@ def PWValidator(Usr_Pass):
             Criteria_04 = True
     return Criteria_01, Criteria_02, Criteria_03, Criteria_04
 
+#Main Prog
+spcl_Char = "'[@_!#$%^&*()<>?/\|}{~:]`+=-.,:;~" + '"'
+
+Input_Pass = input("\nPassword: ")
 InstA, InstB, InstC, InstD = PWValidator(Input_Pass)
 
+# Interpret Results
 if InstA and InstB and InstC and InstD == True:
-    print("\33[92mValid Password\33[0m")
+    print("\n\33[92mValid Password\33[0m\n")
 else:
-    print("\33[91mInvalid Password\33[0m")
+    print("\n\33[91mInvalid Password\33[0m\n")
