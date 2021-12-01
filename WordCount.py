@@ -27,7 +27,7 @@ def EliminateSpace_(Text):
     return sub_word_count
 
 
-Usr_Text = input("Enter text: ").lower()
+Usr_Text = input("\nEnter text: ").lower()
 
 word_count = EliminateSpace_(Usr_Text)
 vowels = 0
@@ -47,6 +47,6 @@ for char in Usr_Text:
     else:
         None
 
-print(word_count)
-print(vowels)
-print(consonants)
+print(f"\nWords: {word_count}")
+print(f"Vowels: {vowels}")
+print(f"Consonants: {consonants}")
